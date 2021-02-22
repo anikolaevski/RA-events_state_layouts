@@ -9,12 +9,13 @@ export class Store extends React.Component {
   state = { prev: 1, current: 1 }
   constructor(props) {
     super(props);
-    this.layout = props.layout;
-    this.products = props.products;
+  }
+  switcher() { 
+    this.setState( (prev) => ({prev: prev.current, current: (prev.current == 1)? 0: 1}) );
   }
   render () {
     return (
-      < ShopView layout={this.layout} products={this.products} switcher={this}/>
+      < ShopView layout={this.props.layout} products={this.props.products} switcher={this.switcher.bind(this)} state={this.state} />
     );
   }
 }
@@ -23,30 +24,26 @@ class ShopView extends React.Component {
   static propTypes = {
     layout: PropTypes.object.isRequired,
     products: PropTypes.array.isRequired,
-    switcher: PropTypes.object.isRequired
+    switcher: PropTypes.func.isRequired,
+    state: PropTypes.object.isRequired
   };
   constructor(props) {
     super(props);
-    this.layout = props.layout;
-    this.products = props.products;
-    this.switcher = props.switcher;
   }
   render () {
-    // console.log('products', this.products); 
-    // console.log('layout', this.layout);
     let k = 0;
-    if (this.switcher.state.current == 1) {
+    if (this.props.state.current == 1) {
       return (
         <div className="store-box">
-          {this.products.map( o => <ShowCard key={k++} item = {o} />)}
-          < ShowIcon switcher={this.switcher} />
+          {this.props.products.map( o => <ShowCard key={k++} item = {o} />)}
+          < ShowIcon switcher={this.props.switcher} state={this.props.state} />
         </div>
       );      
     } else {
       return (
         <div className="store-line-box">
-          {this.products.map( o => <ShowLine key={k++} item = {o} />)}
-          < ShowIcon switcher={this.switcher} />
+          {this.props.products.map( o => <ShowLine key={k++} item = {o} />)}
+          < ShowIcon switcher={this.props.switcher} state={this.props.state} />
         </div>);
     }
   }
@@ -54,18 +51,18 @@ class ShopView extends React.Component {
 
 class ShowIcon extends React.Component {
   static propTypes = {
-    switcher: PropTypes.object.isRequired
+    switcher: PropTypes.func.isRequired,
+    state: PropTypes.object.isRequired
   };
   constructor(props) {
     super(props);
-    this.switcher = props.switcher;
   }
   handleClick () {
-    this.switcher.setState((prev) => ({prev: prev.current, current: (prev.current == 1)? 0: 1}));
+    this.props.switcher();
   }
   render() {
     // console.log(this.switcher.state);
-    if (this.switcher.state.current == 1) {
+    if (this.props.state.current == 1) {
       return(
         <div className="switch-icon" onClick={() => this.handleClick()}>
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z"/></svg>
