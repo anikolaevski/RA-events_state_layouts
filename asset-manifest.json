@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/RA-events_state_layouts/static/css/main.511d5eb8.chunk.css",
+    "main.js": "/RA-events_state_layouts/static/js/main.f86baeeb.chunk.js",
+    "main.js.map": "/RA-events_state_layouts/static/js/main.f86baeeb.chunk.js.map",
+    "runtime-main.js": "/RA-events_state_layouts/static/js/runtime-main.deb5946e.js",
+    "runtime-main.js.map": "/RA-events_state_layouts/static/js/runtime-main.deb5946e.js.map",
+    "static/js/2.5e6dbdaa.chunk.js": "/RA-events_state_layouts/static/js/2.5e6dbdaa.chunk.js",
+    "static/js/2.5e6dbdaa.chunk.js.map": "/RA-events_state_layouts/static/js/2.5e6dbdaa.chunk.js.map",
+    "index.html": "/RA-events_state_layouts/index.html",
+    "static/css/main.511d5eb8.chunk.css.map": "/RA-events_state_layouts/static/css/main.511d5eb8.chunk.css.map",
+    "static/js/2.5e6dbdaa.chunk.js.LICENSE.txt": "/RA-events_state_layouts/static/js/2.5e6dbdaa.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.deb5946e.js",
+    "static/js/2.5e6dbdaa.chunk.js",
+    "static/css/main.511d5eb8.chunk.css",
+    "static/js/main.f86baeeb.chunk.js"
+  ]
+}
